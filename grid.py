@@ -22,6 +22,7 @@ class Grid:
         self.horizontal = [set() for _ in range(9)]
         self.vertical = [set() for _ in range(9)]
         self.square = [set() for _ in range(9)]
+        self.solved = False
 
         if grid is not None:
             self.grid = grid
@@ -122,6 +123,7 @@ class Grid:
                     self.vertical[y].add(num)
                     self.square[self.getSquareIdx(x, y)].add(num)
                     if self.solveSudoku(i + 1):
+                        self.solved = True
                         return True
                     self.grid[x][y] = None
                     self.horizontal[x].remove(num)

@@ -97,7 +97,7 @@ def split_sudoku_cells(img_name):
                 cells = np.split(arr[i][a], 9)
                 d[i][j].append(np.array(cells[j]))
 
-            d[i][j] = thin_font(remove_borders(np.array(d[i][j])))
+            d[i][j] = thin_font(np.array(d[i][j]))
     return d
 
 '''

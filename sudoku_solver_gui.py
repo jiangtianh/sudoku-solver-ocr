@@ -122,11 +122,15 @@ class SudokuGUI(tk.Frame):
     def __solve(self):
         if self.grid.check_valid_sudoku():
             self.grid.solveSudoku(0)
-            self.__draw_puzzle()
+
+            if self.grid.solved == False:
+                self.__draw_message("Unsolvable Sudoku")
+            else:
+                self.__draw_puzzle()
             print(self.grid)
+
         else:
-            print("Invalid sudoku")
-            #TODO
+            self.__draw_message("Invalid Sudoku")
 
 
     '''
@@ -168,6 +172,8 @@ class SudokuGUI(tk.Frame):
     '''
     def __key_pressed(self, event):
         if self.row >= 0 and self.col >= 0 and event.char in "123456789":
+            
+            self.grid.delete_number(self.row, self.col)
             self.grid.add_number(self.row, self.col, int(event.char))
             self.__draw_puzzle()
             self.__draw_cursor()
@@ -209,9 +215,24 @@ class SudokuGUI(tk.Frame):
     '''
     def delete_number(self, event):
         if self.row >= 0 and self.col >= 0:
-            self.grid.remove_number(self.row, self.col)
+            self.grid.delete_number(self.row, self.col)
             self.__draw_puzzle()
-        
+    
+
+    def __draw_message(self, message):
+        x0 = y0 = MARGIN + SIDE * 1
+        x1 = y1 = MARGIN + SIDE * 8
+        self.canvas.create_oval(x0, y0, x1, y1, tags='message', fill='dark orange', outline='orange')
+
+        x = y = MARGIN + 4 * SIDE + SIDE / 2
+        self.canvas.create_text(x, y, text=message, tags='message_text', fill='white', font=('Arial', 32))
+        self.parent.after(3000, self.__dismiss_message)
+        self.parent.bind('<Button-1>', self.__dismiss_message)
+        self.parent.bind('<Key>', self.__dismiss_message)
 
 
+    def __dismiss_message(self, event=None):
+        self.canvas.delete('message', 'message_text')
+        self.parent.unbind('<Button-1>', self.__dismiss_message)
+        self.parent.unbind('<Key>', self.__dismiss_message)
 
