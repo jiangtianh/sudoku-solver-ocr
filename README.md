@@ -14,29 +14,29 @@ Navigation and Editing: Users can easily navigate through cells using arrow keys
 
 ## Getting Started
 1. Install the dependencies:
-'''
+```
 pip install -r requirements.txt
-'''
+```
 2. Run the program:
-'''
+```
 python main.py
-'''
+```
 
 ## Usage
-- Manual Input:
-* Click on cells to select them. 
-* Use keyboard input to enter numbers.
-* Navigate through cells using arrow keys.
-* Clear a cell with the Backspace key.
+* Manual Input:
+    * Click on cells to select them. 
+    * Use keyboard input to enter numbers.
+    * Navigate through cells using arrow keys.
+    * Clear a cell with the Backspace key.
 
-- OCR Feature:
-* Click on "Load Sudoku From Image" to open a file dialog.
-* Select an image file containing a Sudoku puzzle.
-* The program will process the image, recognize the puzzle, and display the solution.
+* OCR Feature:
+    * Click on "Load Sudoku From Image" to open a file dialog.
+    * Select an image file containing a Sudoku puzzle.
+    * The program will process the image, recognize the puzzle, and display the solution.
 
-- Solve Puzzle:
-* Click on the "Solve" button to solve the puzzle using the backtracking algorithm.
-* The solved puzzle will be displayed on the GUI.
+* Solve Puzzle:
+    * Click on the "Solve" button to solve the puzzle using the backtracking algorithm.
+    * The solved puzzle will be displayed on the GUI.
 
-- Clear Puzzle:
-* Click on the "Clear" button to reset the Sudoku puzzle.
+* Clear Puzzle:
+    * Click on the "Clear" button to reset the Sudoku puzzle.
